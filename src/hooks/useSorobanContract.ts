@@ -555,15 +555,6 @@ export function useSorobanContract<TResult = unknown>(
     [baseParse, simulate]
   );
 
-    const contract = useMemo(() => {
-    if (!contractId) return null;
-    try {
-      return new Contract(contractId);
-    } catch {
-      return null;
-    }
-  }, [contractId]);
-
   const read = useCallback(
     async (
       method: string,
@@ -594,7 +585,6 @@ export function useSorobanContract<TResult = unknown>(
 
   return {
     ...state,
-    contract,
     read,
     write,
     invoke,
